@@ -139,7 +139,8 @@ export function runWorkload(
 
 async function saveLogs(id: string, command: string) {
   let logs = await callKubernetesAsync(`logs job/${id}-wl-${command}`)
-
+  core.info("Failed job logs:")
+  core.info(logs)
   try {
     let dir = './logs'
     if (!fs.existsSync(dir)) {
